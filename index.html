@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+
+
+        <a href="#home" class="logo-container">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="10" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(-15 17.5 50)" />
+                    <rect x="35" y="15" width="15" height="70" fill="url(#grad1)" />
+                    <rect x="60" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(15 67.5 50)" />
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.5" />
+                </svg>
+            </div>
+            <div class="logo-text">Portfolio</div>
+        </a>
+        
+        <nav class="main-menu" id="mainMenu">
+            <a href="#home" class="menu-item active">Home</a>
+            <a href="#about" class="menu-item">About</a>
+            <a href="#contact" class="menu-item">Contact</a>
+            <a href="https://github.com/ritesh-bhaiya" target="_blank" rel="noopener noreferrer" class="menu-item external">Github</a>
+            <a href="https://github.com/ritesh-bhaiya" target="_blank" rel="noopener noreferrer" class="menu-item external">Resume</a>
+
+        </nav>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+
+
+
+   
+       <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="coverflow-wrapper">
+            <div class="info">
+                <h2 id="current-title"></h2>
+                <p id="current-description"></p>
+            </div>
+
+            <div class="coverflow-container" tabindex="0">
+                <div class="coverflow" id="coverflow">
+
+                    <div class="coverflow-item" data-index="0">
+                        <div class="cover image-loading">
+                            <img src="images/html.jpg" alt="Mountain Landscape" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+
+                    <div class="coverflow-item" data-index="1">
+                        <div class="cover image-loading">
+                            <img src="images/WhatsApp Image 2025-08-09 at 23.32.54.jpeg" alt="Forest Path" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+
+                    <div class="coverflow-item" data-index="2">
+                        <div class="cover image-loading">
+                            <img src="images/database.jpg" alt="Lake Reflection" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+
+                    <div class="coverflow-item" data-index="3">
+                        <div class="cover image-loading">
+                            <img src="images/productImages2FRelationalDatabaseDesignandModelingforSoftwareEngineers2Fimg5265ad1-8f0f-474c-f180-5e3e582131e4.jpg" alt="Ocean Sunset" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+
+                    <div class="coverflow-item" data-index="4">
+                        <div class="cover image-loading">
+                            <img src="images/create-html-website-using-html-css-and-javascript.jpg" alt="Desert Dunes" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+
+              
+                </div>
+
+                <button class="nav-button prev" onclick="navigate(-1)">‹</button>
+                <button class="nav-button next" onclick="navigate(1)">›</button>
+
+                <div class="dots-container" id="dots"></div>
+                
+                <!-- Play/Pause Button -->
+                <button class="play-pause-button" id="playPauseBtn" onclick="toggleAutoplay()">
+                    <span class="play-icon">▶</span>
+                    <span class="pause-icon" style="display: none;">❚❚</span>
+                </button>
+            </div>
+        </div>
+    </section>
+   
+
+
+
+
+
+    <!-- About Section -->
+    <section id="about" class="section" style="margin-top:30px;">
+        <div class="about-content">
+            <div class="about-header">
+            <p style=" font-size:50px; margin-top:100px;margin-bottom:-70px;">Hi there</p>
+            
+            
+<div id="about-section" style="display:flex; justify-content:center; align-items:center; height:200px;">
+  <h2 id="typing-text"></h2>
+</div>
+
+<script>
+  const text = "I am Ritesh Bhaiya";
+  let i = 0;
+  const speed = 120; // typing speed in ms
+  let started = false; // prevent retriggering
+
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typing-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else {
+      // blink cursor
+      const el = document.getElementById("typing-text");
+      el.style.borderRight = "2px solid transparent";
+      setInterval(() => {
+        el.style.borderRight =
+          el.style.borderRight === "2px solid #8b5cf6"
+            ? "2px solid transparent"
+            : "2px solid #8b5cf6";
+      }, 500);
+    }
+  }
+
+  // Observe when about-section comes into view
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !started) {
+          started = true; // run only once
+          typeWriter();
+          observer.unobserve(entry.target); // stop observing
+        }
+      });
+    },
+    { threshold: 0.5 } // trigger when 50% of section is visible
+  );
+
+  observer.observe(document.getElementById("about-section"));
+</script>
+
+                <p>passionate about building modern web application and single page desktop application with cuttting edge technologies </p>
+            </div>
+            
+            <div class="about-main"  >
+                <div class="about-visual"  >
+                  
+                    <div class="showcase-display"  >
+                        <div class="showcase-main" style="height:600px;" >
+                            <div class="corner-decoration top-left" ></div>
+                            <div class="corner-decoration bottom-right" ></div>
+                            
+                                  <div class="showcase-logo"    >
+                                <img style=" margin-top:40px; margin-bottom:10px;width: 300px;height: 300px;border-radius: 50%;object-fit: cover;display: inline-block;vertical-align: middle;cursor: pointer;  " src="images/e.jpg">     
+                                </div>
+                            
+                            <h3 class="showcase-title" style="margin-top:70px; margin-bottom:0px; ">About me </h3>
+                            <p class="showcase-subtitle" style="margin-top:3px">Computer Science student at IIIT Bhubaneswar</p>
+                            
+                            <div class="showcase-badges">
+                                <a href="https://jamtara.kvs.ac.in/en/" target="_blank" rel="noopener noreferrer" class="badge">10th</a>
+                                <a href="https://hecranchi.kvs.ac.in/en/" target="_blank" rel="noopener noreferrer" class="badge">12th</a>
+                                <a href="https://www.iiit-bh.ac.in" target="_blank" rel="noopener noreferrer" class="badge">B-tech</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+     <section class="projects-section">
+  <h2><span>Featured</span> Projects</h2>
+  <p class="subtitle">
+    Whenever possible, I apply my passion for developing products with springMicoservices and Modern
+    JavaScript Library and Frameworks.
+  </p>
+
+  <div class="projects-grid">
+    <!-- Project Card 1 -->
+    <div class="project-card">
+      <img src="images/dj.jpg" alt="Music Web" class="project-img">
+      <div class="project-content">
+        <h3>Music Web</h3>
+        <p>
+          A static music web app with playlist management and streaming.
+        </p>
+        <div class="tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+        <div class="links">
+          <a href="https://music-web-3pn2.vercel.app/" target="_blank">Live Demo</a>
+          <a href="https://github.com/ritesh-bhaiya/MusicWeb">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Card 2 -->
+    <div class="project-card">
+      <img src="images/bank.jpg" alt="Bank System" class="project-img">
+      <div class="project-content">
+        <h3>Bank Management System</h3>
+        <p>
+          A simple system for managing customer accounts, transactions, and more.
+        </p>
+        <div class="tags">
+          <span>Java</span>
+          <span>MySQL</span>
+        </div>
+        <div class="links">
+          <a  onclick=" alert('Coming Soon')"href="#">Live Demo</a>
+         <a  onclick=" alert('Coming Soon')"href="#">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Card 3 -->
+    <div class="project-card">
+      <img src="images/car.jpg" alt="Car Rental" class="project-img">
+      <div class="project-content">
+        <h3>Car Rental System</h3>
+        <p>
+          Car booking and management platform for customers and admins.
+        </p>
+        <div class="tags">
+          <span>java</span>
+          <span>MySQL</span>
+        </div>
+        <div class="links">
+         <a  onclick=" alert('Coming Soon')"href="#">Live Demo</a>
+          <a  onclick=" alert('Coming Soon')"href="#">Code</a>
+           
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Card 4 -->
+
+  </div>
+</section>
+
+
+<style>
+.projects-section {
+  background: #0a0f1c;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.projects-section h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.projects-section h2 span {
+  color: #ff4eb8;
+}
+.subtitle {
+  color: #aaa;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  text-align: left;
+  transition: transform 0.3s;
+}
+.project-card:hover {
+  transform: scale(1.05);
+}
+.project-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.project-content {
+  padding: 20px;
+}
+.project-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.project-content p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 15px;
+}
+.tags {
+  margin-bottom: 15px;
+}
+.tags span {
+  display: inline-block;
+  background: #1f2937;
+  color: #ddd;
+  padding: 4px 10px;
+  margin: 3px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+.links a {
+  color: #ff4eb8;
+  text-decoration: none;
+  font-weight: bold;
+}
+.links a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   Responsive Media Queries
+   ========================= */
+
+/* 1) Touch devices: avoid zoom-jumpy hover scaling */
+@media (hover: none) {
+  .project-card:hover { transform: none; }
+}
+
+/* 2) Very large desktops (≥ 1280px) 
+   - Give the section more breathing room
+   - 3 columns
+   - Slightly larger type & image height
+*/
+@media (min-width: 1280px) {
+  .projects-section { padding: 80px 24px; }
+  .projects-section h2 { font-size: 44px; }
+  .subtitle { font-size: 15px; }
+  .projects-grid {
+    max-width: 1200px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .project-img { height: 220px; }
+}
+
+/* 3) Desktops (1024px–1279px)
+   - Keep 3 columns if space allows
+   - Comfortable image height
+*/
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .projects-grid { grid-template-columns: repeat(3, 1fr); }
+  .project-img { height: 210px; }
+}
+
+/* 4) Laptops / Large tablets (900px–1023px)
+   - Switch to 2 columns for readability
+   - Slightly reduce heading size
+*/
+@media (min-width: 900px) and (max-width: 1023px) {
+  .projects-section h2 { font-size: 40px; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-img { height: 200px; }
+}
+
+/* 5) Tablets (700px–899px)
+   - Still 2 columns, tighter spacing
+   - Slightly smaller fonts and paddings
+*/
+@media (min-width: 700px) and (max-width: 899px) {
+  .projects-section { padding: 56px 18px; }
+  .projects-section h2 { font-size: 36px; }
+  .subtitle { font-size: 14px; }
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .project-img { height: 190px; }
+  .project-content { padding: 18px; }
+  .project-content h3 { font-size: 18px; }
+}
+
+/* 6) Large phones / Small tablets (600px–699px)
+   - Move to single column
+   - Make links easier to tap
+*/
+@media (min-width: 600px) and (max-width: 699px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    max-width: 560px;
+  }
+  .project-img { height: 200px; }
+  .links { gap: 8px; }
+}
+
+/* 7) Phones (480px–599px)
+   - Single column, tighter layout
+   - Stack the "Code / Live Demo" links vertically
+*/
+@media (min-width: 480px) and (max-width: 599px) {
+  .projects-section { padding: 52px 16px; }
+  .projects-section h2 { font-size: 32px; }
+  .subtitle { font-size: 13px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+  .project-img { height: 180px; }
+  .project-content { padding: 16px; }
+  .project-content p { font-size: 13px; }
+  .tags span { font-size: 12px; padding: 4px 8px; }
+  .links { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+
+/* 8) Small phones (≤ 479px)
+   - Extra compact
+   - Reduce paddings & font sizes for fit
+*/
+@media (max-width: 479px) {
+  .projects-section { padding: 44px 14px; }
+  .projects-section h2 { font-size: 28px; }
+  .subtitle { font-size: 12px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 18px; }
+  .project-card { border-radius: 10px; }
+  .project-img { height: 160px; }
+  .project-content { padding: 14px; }
+  .project-content h3 { font-size: 17px; }
+  .project-content p { font-size: 12px; }
+  .tags span { font-size: 11px; padding: 3px 7px; margin: 2px; }
+  .links { flex-direction: column; gap: 6px; }
+}
+
+/* 9) Reduced motion accessibility (system-level setting)
+   - Remove scale animation for users preferring less motion
+*/
+@media (prefers-reduced-motion: reduce) {
+  .project-card { transition: none; }
+  .project-card:hover { transform: none; }
+}
+</style>
+
+
+            </div>
+            
+
+            <div class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number">120fps</div>
+                    <div class="stat-label">Smooth Performance</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Responsive Design</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3D</div>
+                    <div class="stat-label">Visual Effects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Customization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-content">
+            <div class="contact-header">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind? Let's create something amazing together.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info-section">
+                    <h3>Let's Connect</h3>
+                    <p> here to help you bringing your vision to life.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>riteshbhaiya3000@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+91 9142591270</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>Bhubaneswar,India</p>
+                            </div>
+                        </div>
+                        
+<!--                         <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM PST</p>
+                            </div>
+                        </div> -->
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Follow Me</h4>
+                        <div class="social-buttons">
+<!--                             <a href="#" class="social-btn" title="">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a> -->
+                            <a href="https://x.com/Ritesh__bhaiya?t=ccllisBEEWirIDg1y2JeWQ&s=08" class="social-btn" title="Twitter">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/riteshbhaiya/" class="social-btn" title="LinkedIn">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/_riteshbh?igsh=MWV5dXl0NDM5cHUxZg==" class="social-btn" title="Instagram">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-section">
+                    
+          <form action="contact_servlet" method="post" class="contact-form" >
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn"  onclick=" alert('Thank you for your message! We\'ll get back to you soon.')">Send Message</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-copyright" style="color:black;">
+                © 2025 All rights reserved. | Designed by <a href="index.html" rel="noopener noreferrer">Ritesh Bhaiya</a>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy" onclick="event.preventDefault(); alert('Privacy Policy page would go here');">Privacy Policy</a>
+                <a href="#terms" onclick="event.preventDefault(); alert('Terms of Service page would go here');">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <span>↑</span>
+    </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
