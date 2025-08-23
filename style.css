@@ -242,7 +242,9 @@ body.menu-open .main-menu {
             object-fit: cover;
             border-radius: 10px;
         }
-
+.coverflow-container:focus {
+    outline: none;   /* Removes blue border */
+}
         /* Reflection */
         .coverflow-item .reflection {
             position: absolute;
@@ -1313,4 +1315,5 @@ body.menu-open .main-menu {
 
 
          
+
 
